@@ -1,7 +1,5 @@
 import path from "path";
 import webpack, { Configuration } from "webpack";
-import nodeExternals from "webpack-node-externals";
-
 const serverSrc = path.resolve(__dirname, "./server.ts");
 const distRoot = path.resolve(__dirname, "./dist");
 
@@ -17,7 +15,7 @@ const serverConfig: Configuration = {
       if (!/^@package/.test(req) && req[0] !== "." && req[0] !== "/") {
         return cb(null, `commonjs ${req}`);
       }
-      cb(undefined, undefined);
+      cb(null, undefined);
     }
   ],
   entry: {
@@ -27,7 +25,7 @@ const serverConfig: Configuration = {
     path: distRoot,
     filename: "server.js"
   },
-  resolve: { symlinks: false, extensions: [".js", ".ts"] },
+  resolve: { extensions: [".js", ".ts"] },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env)
