@@ -1,0 +1,16 @@
+{
+  "name": "webpack-express-ts-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "yarn workspace @package/script build",
+    "start": "yarn workspace @package/script start",
+    "start-ts": "yarn workspace @package/script start-ts"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "typescript": "^3.8.3"
+  }
+}
